@@ -1,0 +1,96 @@
+'''
+Created on 25-May-2017
+
+@author: shaina
+'''
+
+import json
+import algo3
+import algo2
+from itertools import islice
+import nltk
+
+def readDataset(filename):
+    f = open(filename, 'rU')
+    dataset = {}
+    dataTag = {}
+    for line in islice(f,1,None):
+        cells = line.split(',')
+        review = cells[4:]
+        dataset[cells[1]] = ''.join(review).replace('"""', '')
+        dataTag[cells[1]] = cells[3]
+    
+    f.close()
+    return dataset, dataTag  
+#end
+
+
+def splitIntoSentences(review):
+    sentences = nltk.tokenize.sent_tokenize(review)
+    return sentences
+#end 
+   
+   
+filename = "E:\\major2_data\\temporal_sample.csv"   
+dataset,dataTag = readDataset(filename)   
+
+dict_F = {}
+dict_FOS = {}
+for key, value in dataset.items():
+    print(key)
+    f = []
+    fop = []
+    fos = []
+    sentences = splitIntoSentences(value)
+    for k in range(len(sentences)):
+        #using algo3
+        raw_features = algo3.extractFeatures(sentences[k]) 
+        if(raw_features ):
+            features, pairs = algo3.findFOP(raw_features, dataTag[key])
+            scores = algo3.findFOS(pairs)
+            f += features
+            fop += pairs
+            fos += scores
+            
+        #using algo2
+        features,  pairs = algo2.findFOP(sentences[k])
+        scores = algo2.findFOS(pairs)
+        f += features
+        fop += pairs
+        fos += scores    
+         
+         
+    #removing duplicates
+    f = list(set(f))
+    fos = list(set(fos))
+    
+    #placing all opinions of same feature in  a list
+    f = {}
+    for k in range(len(fos)):
+        feature = fos[k][0]
+        opinion = fos[k][1]
+        if(feature not in f):
+            f[feature]=[opinion]
+        else:
+            f[feature].append(opinion)
+    
+    
+    FFOS = []
+    for key, value in f.items():
+        FFOS.append((key,value))    
+               
+            
+    dict_F[key] = f
+    dict_FOS[key] = FFOS    
+        
+     
+    
+
+with open("E:\\major2_data\\temporal_sample_algo4_features", 'w')as fp:
+    json.dump(dict_F, fp, sort_keys=True, indent=4)     
+        
+with open("E:\\major2_data\\temporal_sample_algo4_fos", 'w')as fp:
+    json.dump(dict_FOS, fp, sort_keys=True, indent=4)     
+    
+    
+    

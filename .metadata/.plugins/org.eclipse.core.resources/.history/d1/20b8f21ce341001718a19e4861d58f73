@@ -1,0 +1,17 @@
+from itertools import islice
+import pickle
+import json
+import csv
+
+fos = {}
+with open("E:\\major2_data\\amazon_gd_algo4_fos.csv", 'r') as b:
+        reader = csv.reader(b)
+        for rows in reader:
+            print (rows)
+            id = int(rows[0])
+            data = json.loads(rows[1])
+            fos[id] = data
+             
+with open('E:\\major2_data\\amazon_gd_algo4', 'w') as f:
+    json.dump(fos, f, indent = 4)             
+

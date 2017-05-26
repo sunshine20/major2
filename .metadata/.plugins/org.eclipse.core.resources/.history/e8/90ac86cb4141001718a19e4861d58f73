@@ -1,0 +1,13 @@
+from itertools import islice
+import pickle
+import json
+
+for i in range(1,5):
+    a = {}
+    b = {}
+    a[1] = 'hello'
+    b[2] = 'bye'
+    with open('E:\\major2_data\\a', 'a') as f:
+        json.dump(a, f, sort_keys=True, indent=4)         
+    with open('E:\\major2_data\\b', 'a') as f:
+        json.dump(b, f, sort_keys=True, indent=4)   

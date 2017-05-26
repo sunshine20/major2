@@ -1,0 +1,16 @@
+MODULES_MANAGER_V2
+ontology.__init__|C:\Users\shaina\major2\companyFit\ontology\__init__.py
+ontology.exra|C:\Users\shaina\major2\companyFit\ontology\exra.py
+ontology.onto|C:\Users\shaina\major2\companyFit\ontology\onto.py
+sentiment_analysis.__init__|C:\Users\shaina\major2\companyFit\sentiment_analysis\__init__.py
+sentiment_analysis.algo1|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo1.py
+sentiment_analysis.algo2|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo2.py
+sentiment_analysis.algo3|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo3.py
+sentiment_analysis.algo4|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo4.py
+sentiment_analysis.extra|C:\Users\shaina\major2\companyFit\sentiment_analysis\extra.py
+sentiment_analysis.x|C:\Users\shaina\major2\companyFit\sentiment_analysis\x.py
+twitter.Searching|C:\Users\shaina\major2\companyFit\twitter\Searching.py
+twitter.Streaming|C:\Users\shaina\major2\companyFit\twitter\Streaming.py
+twitter.__init__|C:\Users\shaina\major2\companyFit\twitter\__init__.py
+twitter.extra|C:\Users\shaina\major2\companyFit\twitter\extra.py
+twitter.scrape|C:\Users\shaina\major2\companyFit\twitter\scrape.py

@@ -1,0 +1,133 @@
+'''
+Created on 24-May-2017
+
+@author: shaina
+'''
+
+import nltk
+import json
+from itertools import islice
+# noun phrase patterns
+P = ['NN', 'NN NN', 'JJ NN', 'NN NN NN', 'JJ NN NN', 'JJ JJ NN', 'NN IN NN', 'NN IN DT NN']
+
+def extractFeatures(sentence):
+    PC = []
+    tagged_sentence = tagSentence(sentence)
+    n = len(tagged_sentence)
+    for i in range(1, n + 1):
+        if i < (n - 2):
+            x = 3
+        elif i == (n - 2):
+            x = 2
+        elif i == (n - 1):
+            x = 1
+        else:
+            x = 0
+                        
+        for j in range(x, -1, -1):
+            GT = []
+            GW = []
+            for k in range(i, i + j + 1):
+                GT.append(mapPosTag(tagged_sentence[k - 1][1]))  # lists are indexed from 0
+                GW.append(tagged_sentence[k - 1][0])
+            tag = ' '.join(GT)
+            word = ' '.join(GW)
+            if tag in P :
+                i = i + j
+                PC.append(word)
+                break   
+    
+    return PC            
+#end   
+
+ 
+    
+def tagSentence(sentence):
+    t = nltk.tokenize.word_tokenize(sentence)
+    tagged_sentence = nltk.pos_tag(t)
+    new_tagged_sentence = []
+    for i in range(len(tagged_sentence)):
+        word = tagged_sentence[i][0]
+        postag = tagged_sentence[i][1]
+        new_tagged_sentence.append((word, postag, i + 1)) 
+        
+    return new_tagged_sentence    
+#end 
+
+ 
+# mapping pos tag to one used in algo
+def mapPosTag(tag):
+    if tag in ('NN', 'NNS', 'NNP', 'NNPS') :
+        return 'NN'
+    elif tag in ('JJ', 'JJR', 'JJS') :
+        return 'JJ'
+    elif tag in ('RB', 'RBR', 'RBS'):
+        return 'RB'
+    elif tag in ('VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ'):
+        return 'VB'
+    else:
+        return tag
+  
+#end
+
+
+def readDataset(filename):
+    f = open(filename, 'rU')
+    dataset = {}
+    dataTag = {}
+    for line in islice(f,1,3):
+        cells = line.split(',')
+        review = cells[4:]
+        dataset[cells[1]] = ''.join(review).replace('"""', '')
+        dataTag[cells[1]] = cells[3]
+    
+    f.close()
+    return dataset, dataTag  
+#end
+
+
+def splitIntoSentences(review):
+    sentences = nltk.tokenize.sent_tokenize(review)
+    return sentences
+#end 
+   
+
+def scoreAccordingTotag(feature):
+    return
+#end    
+
+filename = "E:\\major2_data\\reviews_amazon_india_new5.csv"   
+dataset,dataTag = readDataset(filename)   
+
+dict_F = {}
+dict_FOS = {}
+for key, value in dataset.items():
+    f = []
+    fop = []
+    fos = []
+    sentences = splitIntoSentences(value)
+    for k in range(len(sentences)):
+        features,  pairs = findFOP(sentences[k])
+        scores = findFOS(pairs)
+        f.append(features)
+        fop.append(pairs)
+        fos.append(scores)
+    dict_F[key] = f
+    dict_FOS[key] = fos    
+        
+        
+    
+
+with open("E:\\major2_data\\amazon_algo2_features", 'w')as fp:
+    json.dump(dict_F, fp, sort_keys=True, indent=4)     
+        
+with open("E:\\major2_data\\amazon_algo2_fos", 'w')as fp:
+    json.dump(dict_FOS, fp, sort_keys=True, indent=4)     
+       
+
+'''
+sent = "Awesome work culture and management culture."
+f = extractFeatures(sent)
+print(f)
+'''
+            

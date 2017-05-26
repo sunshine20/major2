@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pydev-testrun version="1.0"?><pydev-testsuite>
+<summary errors="1" failures="0" finished="true" name="Test Run: 1" tests="0" total_time="Finished in: 0.00 secs."/>
+<test location="C:\Users\shaina\major2\companyFit\sentiment_analysis\x.py" status="error" test="x" time="0">
+<stdout/>
+<stderr><![CDATA[Traceback (most recent call last):
+  File "C:\Users\shaina\.p2\pool\plugins\org.python.pydev_5.2.0.201608171824\pysrc\_pydev_runfiles\pydev_runfiles.py", line 468, in __get_module_from_str
+    mod = __import__(modname)
+  File "C:/Users/shaina/major2/companyFit/sentiment_analysis\x.py", line 13, in <module>
+    parser=StanfordParser(model_path=eng_model_path, path_to_models_jar=my_path_to_models_jar, path_to_jar=my_path_to_jar)
+  File "C:\Python\Python35-32\lib\site-packages\nltk\parse\stanford.py", line 51, in __init__
+    key=lambda model_name: re.match(self._JAR, model_name)
+TypeError: unorderable types: NoneType() > NoneType()
+ERROR: Module: x could not be imported (file: C:\Users\shaina\major2\companyFit\sentiment_analysis\x.py).
+]]></stderr>
+</test>
+<launch mode="run">
+<launch_memento><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration local="true" path="companyFit x.py"/>
+]]></launch_memento>
+</launch>
+</pydev-testsuite>

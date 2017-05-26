@@ -1,0 +1,112 @@
+'''
+Created on 21-Apr-2017
+
+@author: shaina
+'''
+'''
+import os
+java_path = "C:/Java/jdk1.8.0_05/bin/java.exe"
+os.environ['JAVAHOME'] = java_path
+'''
+
+import nltk
+text = nltk.word_tokenize('like')
+print(nltk.pos_tag(text))
+
+
+
+from nltk.corpus import sentiwordnet as swn
+import matplotlib.pyplot as plt 
+import collections
+import numpy as np
+
+def mapPOS(pos):
+    if(pos == 'NN' or pos == 'NNS' or pos == 'NNP' or pos == 'NNPS'):
+        return 'n'
+    elif(pos == 'VB' or pos == 'VBD' or pos == 'VBG' or pos == 'VBN' or pos == 'VBP' or pos == ' VBZ'):
+        return 'v'
+    elif(pos == 'JJ' or pos == 'JJR' or pos == 'JJS'):
+        return 'a'
+    elif(pos == 'RB' or pos == 'RBR' or pos == 'RPS'):
+        return 'r'
+    else:
+        return NULL
+# end 
+
+
+def findSentiScoreWithTag(word, pos, ml_score):
+    mapped_pos = mapPOS(pos)
+    if (mapped_pos == NULL):
+        return findSentiScore(word, ml_score)
+    else:
+        synsets = list(swn.senti_synsets(word, mapped_pos))   
+        n = len(synsets)
+        if(n == 0):
+            return 0
+
+        pscore = 0.0
+        nscore = 0.0
+        
+        for i in range(0, n):
+            pscore += synsets[i].pos_score() / (i + 1) 
+            nscore += synsets[i].neg_score() / (i + 1)
+        
+        pscore = pscore / n
+        nscore = nscore / n
+        # return max if different..if same check value from output of machine learning
+        if(nscore > pscore):
+            return -1 * nscore
+        elif(nscore < pscore):
+            return pscore
+        else:  
+            if(ml_score != NULL):
+                if(ml_score == -1):
+                    return -1 * nscore
+                elif(ml_score == +1):
+                    return pscore
+                elif(ml_score == 0):
+                    return pscore
+                
+            else:
+                # print("miss")
+                return pscore  # if machine learning score is null then positive score taken as default
+# end            
+            
+        
+def findSentiScore(word, ml_score):
+    synsets = list(swn.senti_synsets(word)) 
+    n = len(synsets)
+    if(n == 0):
+        return 0
+
+    pscore = 0.0
+    nscore = 0.0
+    # taking average of scores coz sorting of synsets according to sense number not possble
+    for i in range(0, n):
+        pscore += synsets[i].pos_score() 
+        nscore += synsets[i].neg_score()
+        
+    pscore = pscore / n
+    nscore = nscore / n     
+       
+    # return max if different..if same check value from output of machine learning
+    if(nscore > pscore):
+        return -1 * nscore
+    elif(nscore < pscore):
+        return pscore
+    
+    else:  
+        if(ml_score != NULL):
+            if(ml_score == -1):
+                return -1 * nscore
+            elif(ml_score == +1):
+                return pscore
+            elif(ml_score== 0):
+                return pscore
+            
+        else:
+            #print("miss")
+            return pscore
+# end
+
+   

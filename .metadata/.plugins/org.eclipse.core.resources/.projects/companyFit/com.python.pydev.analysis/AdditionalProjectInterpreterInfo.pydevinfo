@@ -1,0 +1,92 @@
+-- VERSION_4
+-- START DISKCACHE_2
+C:\Users\shaina\major2\.metadata\.plugins\org.eclipse.core.resources\.projects\companyFit\com.python.pydev.analysis\v2_indexcache
+twitter.Streaming|1492720492888581000|C:\Users\shaina\major2\companyFit\twitter\Streaming.py
+ontology.__init__|1492064503575141000|C:\Users\shaina\major2\companyFit\ontology\__init__.py
+sentiment_analysis.extra|1495782935806626000|C:\Users\shaina\major2\companyFit\sentiment_analysis\extra.py
+twitter.Searching|1492719768751771000|C:\Users\shaina\major2\companyFit\twitter\Searching.py
+ontology.onto|1492870191023858000|C:\Users\shaina\major2\companyFit\ontology\onto.py
+sentiment_analysis.__init__|1492772490702399000|C:\Users\shaina\major2\companyFit\sentiment_analysis\__init__.py
+sentiment_analysis.algo2|1495744046945574000|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo2.py
+sentiment_analysis.algo1|1495632335902014000|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo1.py
+ontology.exra|1492104249691798000|C:\Users\shaina\major2\companyFit\ontology\exra.py
+sentiment_analysis.algo4|1495782910244449000|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo4.py
+sentiment_analysis.algo3|1495718261181939000|C:\Users\shaina\major2\companyFit\sentiment_analysis\algo3.py
+twitter.__init__|1491157918924016000|C:\Users\shaina\major2\companyFit\twitter\__init__.py
+twitter.extra|1491489541237193000|C:\Users\shaina\major2\companyFit\twitter\extra.py
+twitter.scrape|1492721021355267000|C:\Users\shaina\major2\companyFit\twitter\scrape.py
+sentiment_analysis.x|1492977394596258000|C:\Users\shaina\major2\companyFit\sentiment_analysis\x.py
+-- END DISKCACHE
+-- START DICTIONARY
+13
+10=twitter.Streaming
+7=sentiment_analysis.extra
+13=StdOutListener.__init__
+9=twitter.Searching
+4=ontology.onto
+5=sentiment_analysis.algo2
+1=sentiment_analysis.algo1
+6=sentiment_analysis.algo4
+8=ontology.exra
+2=sentiment_analysis.algo3
+12=StdOutListener
+11=twitter.extra
+3=twitter.scrape
+-- END DICTIONARY
+-- START TREE 1
+47
+GI|1|GI!11@
+P|2|P!19@P!11@
+a|0|
+asp|2|aspect!27@aspect!35@
+b|0|
+cel|0|
+che|3|checkIfTarget!42@checkIfOpinion!42@checkIfMatch!42@
+com|2|comapany!27@comapany!35@
+cou|1|count!51@
+dat|1|data!59@
+dep|2|dep_parser!11@dep_parser!43@
+dic|0|
+dom|3|domain_words!35@domain_words!27@domain_words!11@
+ext|3|extractFeatures!10@extractFeatureOpinionPairs!10@extractFeatures!18@
+f|3|f!51@f!11@f!67@
+f_w|1|f_writer!51@
+fea|3|features!27@feature!51@features!35@
+ffo|1|FFOS!51@
+fil|1|filename!51@
+fin|14|findFOP!18@findSentiScoreWithTag!10@findFOP!42@findFOP!10@findNormalizedScore!18@findNormalizedScore!42@findNormalizedScore!10@findFOS!18@findSentiScore!10@findFOS!42@findSentiScore!42@findFOS!10@findSentiScore!18@findSentiScoreWithTag!42@
+fnd|0|
+fop|1|fop!51@
+fos|3|fos!59@fos!51@fos_writer!51@
+get|1|getOpinionWord!10@
+h|2|h!67@h!51@
+id|1|id!59@
+ism|0|
+k|1|k!35@
+lst|1|lst!35@
+map|5|mapPOSforSWN!42@mapPosTag!18@mapPosTag!42@mapPosTag!10@mapPOSforSWN!10@
+mpq|2|mpqa!19@mpqa!43@
+opi|1|opinion!51@
+p|0|
+raw|1|raw_features!51@
+rea|6|readDataset!42@reader!59@readDataset!18@reader!11@readDataset!50@readDataset!10@
+sco|1|scores!51@
+sea|1|searchTwitter!74@
+sen|2|sent!11@sentences!51@
+spl|4|splitIntoSentences!18@splitIntoSentences!42@splitIntoSentences!10@splitIntoSentences!50@
+sta|1|start_mining!82@
+std|1|StdOutListener!81@
+sub|0|
+tag|2|tagSentence!10@tagSentence!18@
+tex|1|text!91@
+wor|2|word!35@words!11@
+wri|0|
+y|1|y!35@
+-- END TREE
+-- START TREE 2
+4
+__i|1|__init__!12&82@
+api|1|api!13&83@
+fil|1|filename!13&83@
+on_|5|on_limit!12&82@on_delete!12&82@on_error!12&82@on_status!12&82@on_timeout!12&82@
+-- END TREE

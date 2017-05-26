@@ -1,0 +1,16 @@
+from itertools import islice
+import pickle
+filename = "E:\\major2_data\\mpqa.txt"
+f = open(filename, 'rU')
+subjective_words = []
+count = 0
+for line in islice(f,1,None):
+    cells = line.split(' ')
+    word = cells[2].split('=')[1]
+    subjective_words.append(word)
+    print(word)
+    count +=1
+    print(count)
+    
+f.close()
+pickle.dump(subjective_words, open("E:/major2_data/mpqa.p", "wb"))
